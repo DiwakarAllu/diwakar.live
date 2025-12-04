@@ -73,8 +73,8 @@ function checkDownloadStatus() {
 }
 
 function downloadPDF() {
-  // Removed the "already downloaded" check as per user request
-if (isDownloaded) {
+  // the "already downloaded" 
+  if (isDownloaded) {
     document.getElementById("customAlert").style.display = "block";
     document.getElementById("overlay").style.display = "block";
     return;
@@ -87,6 +87,12 @@ if (isDownloaded) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+
+  // Mark as downloaded in localStorage
+  localStorage.setItem("resumeDownloaded", "true");
+  isDownloaded = true;
+
+  checkDownloadStatus();
 }
 
 function closeAlert() {
