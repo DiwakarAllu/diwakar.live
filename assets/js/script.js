@@ -74,7 +74,11 @@ function checkDownloadStatus() {
 
 function downloadPDF() {
   // Removed the "already downloaded" check as per user request
-
+if (isDownloaded) {
+    document.getElementById("customAlert").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+    return;
+  }
   const pdfUrl =
     "https://drive.google.com/uc?export=download&id=1jE8Nh-OhH36yedD9qGeNXmKgF7c3gF7x";
   const link = document.createElement("a");
